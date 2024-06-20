@@ -133,6 +133,9 @@ async function loadCategories() {
 
 }
 
+function toggleCart() {
+    document.getElementById("cart").classList.toggle("hidden");
+}
 
 
 

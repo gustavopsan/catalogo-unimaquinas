@@ -20,7 +20,7 @@
                 <div class="central-container">
                     <a href="#cardapio">Catálogo</a>
                 </div>
-                <div class="cart-container">
+                <div class="cart-container" onclick="toggleCart()">
                     <span>Meu carrinho</span>
                     <div class="cart-img-container">
                         <img src="/assets/img/icone-carrinho-vazio.svg" alt="img-carrinho">
@@ -91,6 +91,74 @@
                     </a>
                 </div>
             </footer>
+        </div>
+    </div>
+
+    <div class="cart hidden" id="cart">
+        <div class="cart-wrapper">
+            <div class="progress-container">
+                <span class="number one active">1</span>
+                <span class="progress-one active">—</span>
+                <span class="number two">2</span>
+                <span class="progress-two">—</span>
+                <span class="number three">3</span>
+            </div>
+            <div class="cart-header">
+                <span>Seu carrinho:</span>
+                <button class="close-cart" onclick="toggleCart()">
+                    Fechar
+                </button>
+            </div>
+
+            <div class="cart-items">
+                <!-- HTML do Item                
+                <div class="cart-item">
+                    <div class="left-container">
+                        <img src="https://i.imgur.com/JzVZUB5.png" alt="logo-delivery">
+                        <div>
+                            <b>MORSA FILATÓRIA</b>
+                            <span>R$ 0,00</span>
+                        </div>
+                    </div>
+                    <div class="handle-qtd-container">
+                        <div class="qtd-container">
+                            <button class="remove" onclick="decrementAmount(event)">-</button>
+                            <b>0</b>
+                            <button class="add"onclick="incrementAmount(event)">+</button>
+                        </div>
+                        <div class="remove-cart-container">
+                            <button class="remove-cart">
+                                x
+                            </button>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+            <div class="empty-cart-container">
+                <div class="image-container">
+                    <img src="/assets/img/icone-carrinho-vazio.svg" alt="img-carrinho">
+                </div>
+
+                <span>Seu carrinho está vazio</span>
+            </div>
+
+            <div class="obs-container">
+                <span>Caso deseje, informe suas observações sobre os itens escolhidos:</span>
+                <input type="text" name="" id="" placeholder="Digite aqui">
+            </div>
+
+            <div class="bottom-container">
+                <div>Subtotal: <span>R$ 0,00</span></div>
+                <div>Entrega: <span>Grátis</span></div>
+
+                <div class="continue">
+                    <div>Total: <span>R$ 0,00</span></div>
+                    <br><br>
+                    <button>Continuar</button>
+                </div>
+            </div>
+            
         </div>
     </div>
 
