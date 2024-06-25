@@ -22,6 +22,7 @@ function incrementAmount(event) {
     var item = event.target.parentElement;
     var qtd = item.querySelector("b");
     qtd.textContent = parseInt(qtd.textContent) + 1;
+    qtd.dataset.qtd = parseInt(qtd.textContent);
 }
 
 function decrementAmount(event) {
@@ -29,6 +30,7 @@ function decrementAmount(event) {
     var qtd = item.querySelector("b");
     if (parseInt(qtd.textContent) > 0) {
         qtd.textContent = parseInt(qtd.textContent) - 1;
+        qtd.dataset.qtd = parseInt(qtd.textContent);
     }
 }
 
@@ -52,6 +54,7 @@ async function loadCatalogInfo() {
 }
 
 var categories = [];
+var catalogoItems = [];
 
 async function loadProducts(categoryName) {
 
@@ -74,6 +77,8 @@ async function loadProducts(categoryName) {
     const wrapper = document.getElementById(`${categoryName.toLowerCase()}-wrapper`);
 
     response.forEach(product => {
+        catalogoItems.push(product);
+
         wrapper.innerHTML += `
             <div class="item" onmouseenter="hoverItem(event)" onmouseleave="hoverItem(event)">
                 <img src="${product.imagePath}" alt="img-cliente">
@@ -82,12 +87,12 @@ async function loadProducts(categoryName) {
                 <div class="handle-qtd-container hidden">
                     <div class="qtd-container">
                         <button class="remove" onclick="decrementAmount(event)">-</button>
-                        <b>0</b>
+                        <b class="qtd">0</b>
                         <button class="add"onclick="incrementAmount(event)">+</button>
                     </div>
                     <div class="add-cart-container">
-                        <button class="add-cart">
-                            <img src="/assets/img/icone-carrinho-vazio.svg" alt="img-carrinho">
+                        <button class="add-cart" data-id="${product._id}" onclick="addToCart(event)">
+                            +
                         </button>
                     </div>
                 </div>
@@ -133,6 +138,26 @@ async function loadCategories() {
 
 }
 
+function addToCart(event) {
+    var itemId = event.target.dataset.id;
+    var amount = parseInt(event.target.parentElement.previousElementSibling.querySelector(".qtd").dataset.qtd);
+
+    var cart = JSON.parse(getCookie("cart"));
+    var item = {
+        id: itemId,
+        amount: amount,
+        name: catalogoItems.find(item => item._id === itemId).name,
+        value: catalogoItems.find(item => item._id === itemId).originalValue,
+        imagePath: catalogoItems.find(item => item._id === itemId).imagePath
+    }
+
+    console.log(item);
+
+    cart.push(item);
+
+   setCookie("cart", JSON.stringify(cart), 1);
+}
+
 function toggleCart() {
     document.getElementById("cart").classList.toggle("hidden");
 }
@@ -142,6 +167,10 @@ function toggleCart() {
 function initialLoads() {
     loadCategories();
     loadCatalogInfo();
+
+    if (!getCookie("cart")) {
+        setCookie("cart", "[]", 1);
+    }
 }
 
 window.addEventListener("load", initialLoads());

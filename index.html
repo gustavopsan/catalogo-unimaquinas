@@ -96,22 +96,25 @@
 
     <div class="cart hidden" id="cart">
         <div class="cart-wrapper">
-            <div class="progress-container">
-                <span class="number one active">1</span>
-                <span class="progress-one active">—</span>
-                <span class="number two">2</span>
-                <span class="progress-two">—</span>
-                <span class="number three">3</span>
-            </div>
-            <div class="cart-header">
-                <span>Seu carrinho:</span>
+            <div class="progress-wrapper">
+                <div class="progress-container">
+                    <span class="number one active">1</span>
+                    <span class="progress-one active">—</span>
+                    <span class="number two">2</span>
+                    <span class="progress-two">—</span>
+                    <span class="number three">3</span>
+                </div>
+
                 <button class="close-cart" onclick="toggleCart()">
                     Fechar
                 </button>
             </div>
+            <div class="cart-header">
+                <span>Seu carrinho:</span>
+            </div>
 
             <div class="cart-items">
-                <!-- HTML do Item                
+                <!-- HTML do Item  -->       
                 <div class="cart-item">
                     <div class="left-container">
                         <img src="https://i.imgur.com/JzVZUB5.png" alt="logo-delivery">
@@ -132,10 +135,10 @@
                             </button>
                         </div>
                     </div>
-                </div>-->
+                </div>
             </div>
 
-            <div class="empty-cart-container">
+            <div class="empty-cart-container hidden">
                 <div class="image-container">
                     <img src="/assets/img/icone-carrinho-vazio.svg" alt="img-carrinho">
                 </div>
@@ -163,6 +166,7 @@
     </div>
 
     <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/base.js"></script>
     <script src="/assets/js/main.js"></script>
 </body>
 </html>
