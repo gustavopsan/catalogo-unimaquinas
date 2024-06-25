@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="referrer" content="no-referrer">
+    <title>Seja bem-vindo</title>
+    <meta name="description" content="Site de divulgação e busca de estabelecimentos e seus produtos">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="cart" id="cart">
+        <div class="cart-wrapper">
+            <div class="progress-wrapper">
+                <div class="progress-container">
+                    <span class="number one active">1</span>
+                    <span class="progress-one active">—</span>
+                    <span class="number two">2</span>
+                    <span class="progress-two">—</span>
+                    <span class="number three">3</span>
+                </div>
+
+                <button class="close-cart" onclick="javascript: window.location.replace('/')">
+                    Fechar
+                </button>
+            </div>
+            <div class="cart-header">
+                <span>Seu carrinho:</span>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+                 
+            </div>
+
+            <div id="empty-cart-container" class="empty-cart-container hidden">
+                <div class="image-container">
+                    <img src="/assets/img/icone-carrinho-vazio.svg" alt="img-carrinho">
+                </div>
+
+                <span>Seu carrinho está vazio</span>
+            </div>
+
+            <div class="obs-container">
+                <span>Caso deseje, informe suas observações sobre os itens escolhidos:</span>
+                <input type="text" name="" id="" placeholder="Digite aqui">
+            </div>
+
+            <div class="bottom-container">
+                <div>Subtotal: <span>R$ 0,00</span></div>
+                <div>Entrega: <span>Grátis</span></div>
+
+                <div class="continue">
+                    <div>Total: <span>R$ 0,00</span></div>
+                    <br><br>
+                    <button>Continuar</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/cart.js"></script>
+</body>
+</html>

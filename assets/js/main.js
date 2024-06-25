@@ -148,6 +148,7 @@ function addToCart(event) {
         amount: amount,
         name: catalogoItems.find(item => item._id === itemId).name,
         value: catalogoItems.find(item => item._id === itemId).originalValue,
+        totalValue: catalogoItems.find(item => item._id === itemId).originalValue * amount,
         imagePath: catalogoItems.find(item => item._id === itemId).imagePath
     }
 
@@ -159,7 +160,7 @@ function addToCart(event) {
 }
 
 function toggleCart() {
-    document.getElementById("cart").classList.toggle("hidden");
+    window.location.replace("/cart/");
 }
 
 

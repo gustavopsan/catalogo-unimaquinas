@@ -394,11 +394,6 @@ body, * {
 
 .cart {
     display: flex;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
     background-color: #ffffff;
     z-index: 100;
     justify-content: center;
@@ -637,8 +632,6 @@ body, * {
     gap: 10px;
     min-width: 850px;
     align-self: center;
-    position: fixed;
-    bottom: 0;
     padding: 20px;
     background-color: #ffffff;
     border-top: 1px solid #cccccc;
