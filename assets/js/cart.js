@@ -1,8 +1,13 @@
 const cartlits = document.getElementById("cart-items");
 const emptyCart = document.getElementById("empty-cart-container");
 
+const subtotalValue = document.getElementById("subtotal-value");
+const deliveryValue = document.getElementById("delivery-value");
+const totalValue = document.getElementById("total-value");
+
 function listItems() {
     cartlits.innerHTML = "";
+    var subtotal = 0, delivery = 0, total = 0;
 
     var cartItems = JSON.parse(getCookie("cart"));
     console.log(cartItems);
@@ -11,6 +16,10 @@ function listItems() {
         emptyCart.classList.remove("hidden");
     } else {
         cartItems.forEach((item, index) => {
+            subtotal += item.totalValue;
+            delivery = 0;
+            total = subtotal + delivery;
+
             cartlits.innerHTML += `
                 <div class="cart-item">
                     <div class="left-container">
@@ -35,6 +44,10 @@ function listItems() {
                 </div>
             `
         });
+
+        subtotalValue.textContent = subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        deliveryValue.textContent = delivery.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        totalValue.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 }
 
@@ -48,6 +61,7 @@ function incrementAmount(event) {
     var itemIndex = event.target.dataset.itemIndex;
 
     cart[itemIndex].amount = cart[itemIndex].amount + 1;
+    cart[itemIndex].totalValue = cart[itemIndex].value * cart[itemIndex].amount;
 
     setCookie("cart", JSON.stringify(cart), 1);
 
@@ -66,6 +80,7 @@ function decrementAmount(event) {
         var itemIndex = event.target.dataset.itemIndex;
 
         cart[itemIndex].amount = cart[itemIndex].amount - 1;
+        cart[itemIndex].totalValue = cart[itemIndex].value * cart[itemIndex].amount;
 
         setCookie("cart", JSON.stringify(cart), 1);
 
