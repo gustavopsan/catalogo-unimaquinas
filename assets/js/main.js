@@ -35,22 +35,29 @@ function decrementAmount(event) {
 }
 
 async function loadCatalogInfo() {
-    const request = await fetch(
-        `${APIPATH}/cataloginfo/get`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                sellerId: CATALOG_ID
-            })
-        }
-    );
+    if(!getCookie("catalogInfo")) {
+        const request = await fetch(
+            `${APIPATH}/cataloginfo/get`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    sellerId: CATALOG_ID
+                })
+            }
+        );
 
-    const response = await request.json();
+        const response = await request.json();
+
+        setCookie("catalogInfo", JSON.stringify(response), 1);
+        console.log(JSON.parse(getCookie("catalogInfo")));
+    } else {
+        console.log(JSON.parse(getCookie("catalogInfo")));
+    }
     
-    document.title = response.catalogName;
+    document.title = JSON.parse(getCookie("catalogInfo")).catalogName;
 }
 
 var categories = [];
@@ -157,17 +164,32 @@ function addToCart(event) {
     cart.push(item);
 
    setCookie("cart", JSON.stringify(cart), 1);
+
+   checkCart();
 }
 
 function toggleCart() {
     window.location.replace("/cart/");
 }
 
+function checkCart() {
+    var cartItems = JSON.parse(getCookie("cart"));
+    const cartButton = document.getElementById("cartButton");
+    const cartImage = document.getElementById("cartImage");
+    const cartLabel = document.getElementById("cartLabel");
+
+    if (cartItems.length > 0) {
+        cartButton.style.backgroundColor = "#fF5f00"
+        cartImage.style.backgroundColor = "#000000"
+        cartLabel.innerText = `Finalizar ${cartItems.length} Itens`
+    }
+}
 
 
 function initialLoads() {
     loadCategories();
     loadCatalogInfo();
+    checkCart();
 
     if (!getCookie("cart")) {
         setCookie("cart", "[]", 1);

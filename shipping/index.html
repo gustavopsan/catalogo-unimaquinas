@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja Bem Vindo</title>
+    <meta name="description" content="Site de divulgação e busca de estabelecimentos e seus produtos">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="cart" id="cart">
+        <div class="cart-wrapper">
+            <div class="progress-wrapper">
+                <div class="progress-container">
+                    <span class="number one active" onclick="window.history.back()">1</span>
+                    <span class="progress-one active">—</span>
+                    <span class="number two active">2</span>
+                    <span class="progress-two active">—</span>
+                    <span class="number three">3</span>
+                </div>
+
+                <button class="close-cart" onclick="javascript: window.location.replace('/')">
+                    Fechar
+                </button>
+            </div>
+
+            <div class="cart-header">
+                <span>Endereço de Entrega:</span>
+            </div>
+
+            <form class="form-container">
+                <div class="form-wrapper">
+                    <div class="input-wrapper first">
+                        <span>Endereço</span>
+                        <input type="text" name="address" id="addressInput" required placeholder="Ex.: Praça das Árvores">
+                    </div>
+                    <div class="input-wrapper">
+                        <span>Bairro</span>
+                        <select name="hood" required id="hoodInput">
+                        </select>
+                    </div>
+                    <div class="input-wrapper number">
+                        <span>Número</span>
+                        <input type="number" name="number" id="numberInput" required placeholder="Ex.: 20">
+                    </div>
+                </div>
+
+                <div class="form-wrapper">
+                    <div class="input-wrapper first">
+                        <span>Ponto de Referência</span>
+                        <input type="text" name="reference" id="referenceInput" placeholder="Ex.: Próximo aos Correios">
+                    </div>
+
+                    <div class="input-wrapper">
+                        <span>Pagamento</span>
+                        <select name="paymentMethod" required id="paymentMethod">
+                            <option id="pix" value="pix">Pix</option>
+                            <option id="money" value="money">Dinheiro</option>
+                            <option id="card" value="card">Cartão</option>
+                            <option id="ticket" value="ticket">Vale-Alimentação</option>
+                        </select>
+                    </div>
+
+                    <div class="input-wrapper hidden" id="returnWrapper">
+                        <span>Troco para</span>
+                        <input type="number" name="return" id="returnInput">
+                    </div>
+                </div>
+            </form>
+
+            <div class="bottom-container">
+                <div>Subtotal: <span id="subtotal-value">R$ 0,00</span></div>
+                <div>Entrega: <span id="delivery-value">Grátis</span></div>
+
+                <div class="continue">
+                    <div>Total: <span id="total-value">R$ 0,00</span></div>
+                    <br><br>
+                    <button onclick="window.location.pathname='/shipping'">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/shipping.js"></script>
+</body>
+</html>

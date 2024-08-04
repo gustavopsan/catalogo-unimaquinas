@@ -362,7 +362,7 @@ body, * {
 .catalogo-items .catalogo-wrapper .item .handle-qtd-container .qtd-container b {
     width: 15px;
     text-align: center;
-    padding: 3px 10px;
+    padding: 4px 10px;
     border-top: 1px solid #111111;
     border-bottom: 1px solid #111111;
     background-color: #fF5f00;
@@ -428,14 +428,14 @@ body, * {
 }
 
 .cart .progress-container span.number {
-    padding: 5px 10px;
+    padding: 3px 10px;
     width: 10px;
     text-align: center;
     background-color: #ffffff;
     border-radius: 50%;
     color: #111111;
     cursor: pointer;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
 .cart .progress-container span.number.active {
@@ -449,8 +449,7 @@ body, * {
 .cart .progress-container span:not(.number) {
     margin-left: -2px;
     margin-right: -2px;
-    z-index: -1;
-    font-size: 25px;
+    font-size: 20px;
     color: #cccccc;
 }
 
@@ -467,6 +466,44 @@ body, * {
 .cart .cart-header span {
     font-weight: bolder;
     font-size: 20px;
+}
+
+.cart .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px;
+    min-width: 850px;
+    align-self: center;
+}
+
+.cart .form-container .form-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    gap: 25px;
+}
+
+.cart .form-container .form-wrapper .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart .form-container .form-wrapper .input-wrapper.first {
+    width: 60%;
+}
+
+.cart .form-container .form-wrapper .input-wrapper input, 
+.cart .form-container .form-wrapper .input-wrapper select {
+    background-color: var(--color-white);
+    color: var(--color-black) !important;
+    border-radius: 20px;
+    padding: 15px 25px;
+    font-size: 15px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+    border: none !important;
+
 }
 
 .cart .close-cart {
@@ -560,7 +597,7 @@ body, * {
 .cart .cart-item .handle-qtd-container .qtd-container b {
     width: 15px;
     text-align: center;
-    padding: 3px 10px;
+    padding: 4px 10px;
     border-top: 1px solid #111111;
     border-bottom: 1px solid #111111;
     background-color: #ffffff;
