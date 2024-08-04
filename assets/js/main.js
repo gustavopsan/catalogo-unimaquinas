@@ -189,11 +189,12 @@ function checkCart() {
 function initialLoads() {
     loadCategories();
     loadCatalogInfo();
-    checkCart();
 
     if (!getCookie("cart")) {
         setCookie("cart", "[]", 1);
     }
+
+    checkCart();
 }
 
 window.addEventListener("load", initialLoads());
