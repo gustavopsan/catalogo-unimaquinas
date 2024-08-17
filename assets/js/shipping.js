@@ -1,7 +1,11 @@
 var cartItems = JSON.parse(getCookie("cart"));
 var catalogInfo = JSON.parse(getCookie("catalogInfo"));
 
-console.log(catalogInfo)
+var subtotal = 0;
+var delivery = 0;
+var total = 0;
+
+console.log(cartItems)
 
 const addressEl = document.getElementById("addressInput");
 const hoodEl = document.getElementById("hoodInput");
@@ -15,8 +19,6 @@ const deliveryEl = document.getElementById("delivery-value");
 const totalEl = document.getElementById("total-value");
 
 function loadCartData() {
-    var subtotal = 0, delivery = 0, total = 0;
-
     cartItems.forEach((item) => {
         subtotal += item.totalValue;
         delivery = 0;
@@ -58,6 +60,11 @@ function loadDeliveryValues() {
 
         hoodEl.appendChild(option);
     })
+
+    delivery = deliveryValues[0][0].value;
+    total = subtotal + delivery;
+    deliveryEl.textContent = delivery.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    totalEl.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 function showReturnInput() {
@@ -70,7 +77,33 @@ function showReturnInput() {
     }
 }
 
-paymentEl.addEventListener("change", () => showReturnInput())
+paymentEl.addEventListener("change", () => showReturnInput());
+
+function setShippingValue(event) {
+    var shippingValue = parseFloat(event.target.value);
+    total = subtotal + shippingValue;
+    deliveryEl.textContent = shippingValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    totalEl.textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+function setShippingInfo() {
+    var shippingInfo = {
+        address: addressEl.value,
+        hood: hoodEl.value,
+        number: numberEl.value,
+        reference: referenceEl.value,
+        paymentMethod: paymentEl.value,
+        returnValue: parseFloat(returnEl.value) ? (parseFloat(returnEl.value) - total) : 0,
+        totalValue: total,
+        cartItems: cartItems,
+        shippingDate: new Date().toISOString()
+    }
+
+    setCookie("shippingInfo", JSON.stringify(shippingInfo), 0.25);
+    console.log(JSON.parse(getCookie("shippingInfo")));
+
+    window.location.replace("/resume");
+}
 
 window.addEventListener("load", () => {
     loadCartData();
