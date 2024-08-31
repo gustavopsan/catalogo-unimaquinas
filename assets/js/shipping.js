@@ -89,7 +89,8 @@ function setShippingValue(event) {
 function setShippingInfo() {
     var shippingInfo = {
         address: addressEl.value,
-        hood: hoodEl.value,
+        hood: document.querySelector("#hoodInput option:checked").innerText,
+        shippingValue: hoodEl.value,
         number: numberEl.value,
         reference: referenceEl.value,
         paymentMethod: paymentEl.value,

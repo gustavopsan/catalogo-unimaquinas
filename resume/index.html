@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>Seja Bem Vindo</title>
+    <title>Pedido - Catálogo Online</title>
     <meta name="description" content="Site de divulgação e busca de estabelecimentos e seus produtos">
 
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -63,12 +63,23 @@
 
                 <br><br>
                 <span>Local da Entrega:</span>
-                <div class="place-container">
+                <div class="place-container" id="placeContainer">
                     <img src="/assets/img/map.svg" class="map-icon">
                     <span>Rua dos Cafés, 123</span> 
                 </div>
             </div>
 
+            <div class="bottom-container">
+                <div>Subtotal: <span id="subtotal-value">R$ 0,00</span></div>
+                <div>Entrega: <span id="delivery-value">Grátis</span></div>
+
+                <div class="continue">
+                    <div>Total: <span id="total-value">R$ 0,00</span></div>
+                    <br><br>
+                    <button onclick="window.location.pathname= '/shipping'">Continuar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
