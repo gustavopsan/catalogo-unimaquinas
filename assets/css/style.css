@@ -520,6 +520,26 @@ body, * {
     color: #fF5f00;
 }
 
+.cart-content .place-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 20px 0;
+    align-items: center;
+}
+
+.cart-content .place-container img {
+    width: 25px;
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cart-content .place-container span {
+    font-size: 15px;
+    font-weight: 400;
+}
 
 
 .cart .form-container {
